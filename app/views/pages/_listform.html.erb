@@ -1,0 +1,9 @@
+<p><%= form_for @day = Day.new do |f| %>
+
+  <p><%= f.label :date %>
+
+  <%= date_field(:day, :date)%></p>
+
+  <p><%= f.submit (@day.new_record? ? "Create" : "Create") %></p>
+
+<% end %></p>

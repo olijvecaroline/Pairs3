@@ -1,31 +1,27 @@
 class DaysController < ApplicationController
-before method
-
-def list
-  @student_array = User.where("admin='false'").to_a
-  @pairs =[]
-  while @student_array.size > 1 do
-    @pair = @student_array.slice!(0,2)
-    @pairs << @pair
-    @unpaired = @student_array
+  def new
+    @day = Day.new
   end
-    @pairs << @student_array
-  @pairs
-end
 
-def new
-@list =
-end
+  def create
+    @day = Day.new(day_params)
 
-def create
-@list
+    @student_array = User.where("admin='false'").to_a
+    @pairs =[]
+    while @student_array.size > 1 do
+      @pair = @student_array.slice!(0,2)
+      @pairs << @pair
+      @unpaired = @student_array
+    end
+      @pairs << @student_array
 
-def create
-  @list= Day.new(Today,(@pairs.to_s) )
-  @list.save
-
+    @day.list = @pairs.to_s
+    @day.save
   end
 
 
-end
+  def day_params
+        params.require(:day).permit(:date, :list)
+      end
+
 end

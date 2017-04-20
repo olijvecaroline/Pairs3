@@ -6,8 +6,18 @@
 <% studentarray<<student %>
 <% end %>
 <h3> List of pairs for the day:</h3>
-<% @pairs.each do |pair|%>
+<% @pairs.shuffle.each do |pair|%>
 <p> <%= pair %> <p>
   <% end %>
 <h3> Upaired: </h3>
 <p><%= @unpaired %></p>
+
+<%= render "listform" %>
+
+<div>
+<% form_for @day = Day.new, url:{controller: 'days', action: 'create'}, html: {class: "nifty_form"}  do |f| %>
+  <%= f.date_field :date %>
+  <%= f.text_field :list %>
+  <%= submit_tag "Create" %>
+<% end %>
+</div>
