@@ -1,3 +1,6 @@
+
+<h2>Adminpage</h2>
+
 <h3> List of students: </h3>
 <% @students %>
 <% studentarray = [] %>
@@ -7,17 +10,9 @@
 <% end %>
 <h3> List of pairs for the day:</h3>
 <% @pairs.shuffle.each do |pair|%>
-<p> <%= pair %> <p>
+<p> <%= pair %><p>
   <% end %>
 <h3> Upaired: </h3>
 <p><%= @unpaired %></p>
-
+<h3> Make a list </h3>
 <%= render "listform" %>
-
-<div>
-<% form_for @day = Day.new, url:{controller: 'days', action: 'create'}, html: {class: "nifty_form"}  do |f| %>
-  <%= f.date_field :date %>
-  <%= f.text_field :list %>
-  <%= submit_tag "Create" %>
-<% end %>
-</div>

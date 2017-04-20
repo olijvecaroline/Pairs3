@@ -2,8 +2,11 @@ class UsersController < ApplicationController
 
   before_filter :authenticate_user!
 
+
+
   def index
       @users = User.all
+      @days = Day.all
   end
 
   def show
@@ -11,5 +14,17 @@ class UsersController < ApplicationController
     @users = User.all
     #if amin statements in view
   end
-  
+
+  def update
+    @user= User.find(params[:email])
+    @user.update(user_params)
+      redirect_to list_pages_path
+  end
+
+
+
+  def promote_to_admin
+    @user.admin = true
+  end
+
 end

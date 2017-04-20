@@ -2,7 +2,7 @@ class DaysController < ApplicationController
   def new
     @day = Day.new
   end
-
+  @days = Day.all
   def create
     @day = Day.new(day_params)
 

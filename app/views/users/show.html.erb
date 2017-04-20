@@ -1,11 +1,11 @@
-<% if user_signed_in? && current_user.admin? %>
-  <% randomarray = [] %>
-  <% @users.each do |gebruiker| %>
-  <% randomarray<<gebruiker.id %>
-  <% end %>
-  <p> <%= randomarray.reverse! %> </p>
-<% end %>
-
-<% if user_signed_in? && !current_user.admin? %>
-  <p><%= @user.created_at %></p>
-<% end %>
+<% if user_signed_in? %>
+<%= @user.email %>
+<p> Look for your match of the day: <p>
+<% else %>
+<p> This is not your page </p>
+<%end%>
+<% @days.each do |day| %>
+<% if day.date <= Date.today %>
+ <%= @day.list %>
+ <%end%>
+<%end%>
