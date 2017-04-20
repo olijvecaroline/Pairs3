@@ -1,0 +1,13 @@
+<h3> List of students: </h3>
+<% @students %>
+<% studentarray = [] %>
+<% @students.each do |student| %>
+<p> <%=  student.email %> </p>
+<% studentarray<<student %>
+<% end %>
+<h3> List of pairs for the day:</h3>
+<% @pairs.each do |pair|%>
+<p> <%= pair %> <p>
+  <% end %>
+<h3> Upaired: </h3>
+<p><%= @unpaired %></p>
