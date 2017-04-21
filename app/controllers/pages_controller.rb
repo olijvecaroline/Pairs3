@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  
+
   def list
     @students = User.where("admin='false'")
 
