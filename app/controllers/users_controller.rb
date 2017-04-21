@@ -16,15 +16,12 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user= User.find(params[:email])
-    @user.update(user_params)
-      redirect_to list_pages_path
   end
 
-
-
   def promote_to_admin
-    @user.admin = true
+    @user= User.find(params[:email])
+    @user.admin != @user.admin
+    redirect_to list_pages_path
   end
 
 end

@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get 'pages/list' => 'pages#list'
   get 'users/:id'=> 'users#show'
+  
+  post'pages/list' =>'users#promote_to_admin'
   devise_for :users
   resources :days
 

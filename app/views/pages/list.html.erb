@@ -6,6 +6,8 @@
     <% studentarray = [] %>
     <% @students.each do |student| %>
   <p> <%=  student.email %> </p>
+  <% params = ActionController::Parameters.new(email: '#{student.email}')%>
+  <%=link_to "make admin", controller: "users", action: "promote_to_admin", email: student.email%>
     <% studentarray<<student %>
     <% end %>
 <h3> List of pairs for the day:</h3>
@@ -17,4 +19,3 @@
 <h3> Make a list </h3>
 
     <%= render "listform" %>
-    <%= render "adminform" %>
